@@ -1,6 +1,7 @@
 import { Component } from 'react';
 
 import CardsListItem from '../components/Cards/Cards';
+import HeadTitle from '../components/HeadTitle/HeadTitle';
 import listCards from '../card.json';
 
 class HomePage extends Component {
@@ -31,7 +32,7 @@ class HomePage extends Component {
 
     return (
       <>
-        {/* <HeadTitle>VEGETABLES AND FRUITS</HeadTitle> */}
+        <HeadTitle>VEGETABLES AND FRUITS</HeadTitle>
 
         {/* <SearchBar submitProps={this.submitProps} currentQuery={currentQuery} /> */}
         <CardsListItem cards={cards} />

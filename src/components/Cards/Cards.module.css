@@ -5,12 +5,7 @@ body {
   background: url('../img/fon.jpg');
   color: #1d6c1d;
 }
-/* .shop-name {
-  text-align: center;
-  margin: 0px auto;
-  font-size: 70px;
-  color: #1d6c1d;
-} */
+
 .product {
   display: flex;
   flex-wrap: wrap;
@@ -64,22 +59,7 @@ list_card:first-child {
   margin-left: 21px;
   font-weight: 600;
 }
-/* .total-basket {
-  position: absolute;
-  right: 127px;
-  top: 54px;
-  height: 54px;
-  width: 48px;
-  background: no-repeat url('../img/xc.svg');
-} */
-/* .account {
-  position: absolute;
-  right: 191px;
-  top: 59px;
-  height: 48px;
-  width: 48px;
-  background: no-repeat url('../img/account.svg');
-} */
+
 .price-product {
   display: inline-flex;
   margin-bottom: 16px;
