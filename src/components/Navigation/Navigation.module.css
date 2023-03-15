@@ -4,15 +4,15 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 18px;
   font-weight: bold;
-  color: #6ab1d6c4;
+  color: #4d7a26b5;
   text-decoration: none;
 }
 
 .activeStyle {
-  color: #05699d;
+  color: #1d6c1d;
   text-decoration: underline;
 }
 
 .navigation:hover {
-  color: #054b8ec4;
+  color: #016a3d;
 }

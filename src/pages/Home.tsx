@@ -1,7 +1,9 @@
 import { Component } from 'react';
 
-import CardsListItem from '../components/Cards/Cards';
-import HeadTitle from '../components/HeadTitle/HeadTitle';
+import CardsListItem from '../components/Cards';
+import HeadTitle from '../components/HeadTitle';
+import SearchBar from '../components/SearchBar';
+
 import listCards from '../card.json';
 
 class HomePage extends Component {
@@ -34,7 +36,7 @@ class HomePage extends Component {
       <>
         <HeadTitle>VEGETABLES AND FRUITS</HeadTitle>
 
-        {/* <SearchBar submitProps={this.submitProps} currentQuery={currentQuery} /> */}
+        <SearchBar submitProps={this.submitProps} currentQuery={currentQuery} />
         <CardsListItem cards={cards} />
       </>
     );
@@ -42,14 +44,3 @@ class HomePage extends Component {
 }
 
 export default HomePage;
-
-// function Home() {
-//   return (
-//     <>
-//       <h1>Hello word!</h1>;
-//       <CardsListItem cards={listCards} />;
-//     </>
-//   );
-// }
-
-// export default Home;
