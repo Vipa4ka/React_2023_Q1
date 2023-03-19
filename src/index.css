@@ -1,0 +1,10 @@
+body {
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', Sans-Serif;
+  background: rgb(245, 247, 247);
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
