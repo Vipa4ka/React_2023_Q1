@@ -1,5 +1,7 @@
+import HeadTitle from '../components/HeadTitle';
+
 function AboutUs() {
-  return <h1>About Us</h1>;
+  return <HeadTitle>About Us</HeadTitle>;
 }
 
 export default AboutUs;

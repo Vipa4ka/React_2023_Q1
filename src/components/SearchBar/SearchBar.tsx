@@ -21,7 +21,7 @@ class SearchBar extends Component<PropSearchBar, StateSeach> {
     const { submitProps } = this.props;
 
     if (searchQuery.trim() === '') {
-      alert('Enter something to search.');
+      alert('Enter something...');
       return;
     }
 

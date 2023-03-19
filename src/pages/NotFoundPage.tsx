@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom';
+import HeadTitle from '../components/HeadTitle';
 function NotFound() {
   return (
     <>
-      <h1> 404 Not Found</h1>
-      <Link to="/">GO HOME</Link>
+      <HeadTitle> 404 Not Found</HeadTitle>
     </>
   );
 }
