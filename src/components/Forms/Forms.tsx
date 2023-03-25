@@ -1,6 +1,8 @@
 import styles from './Forms.module.css';
 import { Component } from 'react';
 
+import Name from './componentsForms/Name';
+
 class Forms extends Component {
   state = {
     value: '',
@@ -21,24 +23,8 @@ class Forms extends Component {
 
     return (
       <form className={styles.list} onSubmit={this.handleSubmit}>
-        <label>
-          <input
-            className={styles.input}
-            type="text"
-            placeholder="First Name"
-            value={value}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label>
-          <input
-            className={styles.input}
-            type="text"
-            placeholder="Last Name"
-            value={value}
-            onChange={this.handleChange}
-          />
-        </label>
+        <Name />
+
         <label>
           <input
             className={styles.input}
@@ -68,7 +54,7 @@ class Forms extends Component {
             onChange={this.handleChange}
           />
         </label>
-        <label>
+        {/* <label>
           <input
             className={styles.input}
             type="text"
@@ -76,7 +62,7 @@ class Forms extends Component {
             value={value}
             onChange={this.handleChange}
           />
-        </label>
+        </label> */}
         <label>
           <input
             className={styles.input}
