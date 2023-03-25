@@ -1,98 +1,108 @@
 import styles from './Forms.module.css';
-import { Component } from 'react';
-
-import Name from './componentsForms/Name';
+import { Component, createRef } from 'react';
 
 class Forms extends Component {
-  state = {
-    value: '',
-    agreed: false,
-  };
+  constructor(props: Record<string, never>) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.name = createRef();
+    this.surname = createRef();
+    this.birthdate = createRef();
+    this.female = createRef();
+    this.male = createRef();
+    // this.surname = createRef();
+    // this.surname = createRef();
+    // this.surname = createRef();
+  }
+  name: React.RefObject<HTMLInputElement>;
+  surname: React.RefObject<HTMLInputElement>;
+  birthdate: React.RefObject<HTMLInputElement>;
+  female: React.RefObject<HTMLInputElement>;
+  male: React.RefObject<HTMLInputElement>;
+  // surname: React.RefObject<HTMLInputElement>;
+  // surname: React.RefObject<HTMLInputElement>;
+  // surname: React.RefObject<HTMLInputElement>;
+  // surname: React.RefObject<HTMLInputElement>;
+  // surname: React.RefObject<HTMLInputElement>;
 
-  handleChange = (e) => {
-    this.setState({ value: e.target.value });
-  };
-  handleChangeCheckbox = () => {
-    // this.setState({ [name]: type === 'checkbox' ? checked : value });
-  };
+  handleChange(event: React.SyntheticEvent) {
+    event.preventDefault();
 
-  handleSubmit = () => {};
+    const { name, surname, birthdate, female, male } = this;
+    const currentName = (name.current as HTMLInputElement).value;
+    const currentSurname = (surname.current as HTMLInputElement).value;
+    const currentBirthdate = (birthdate.current as HTMLInputElement).value;
+    const currentFemale = (female.current as HTMLInputElement).value;
+    const currentMale = (male.current as HTMLInputElement).value;
+    // const currentSurname = (surname.current as HTMLInputElement).value;
+    // const currentSurname = (surname.current as HTMLInputElement).value;
+    // const currentSurname = (surname.current as HTMLInputElement).value;
+    // const currentSurname = (surname.current as HTMLInputElement).value;
+    // const currentSurname = (surname.current as HTMLInputElement).value;
+    console.log(currentName, currentSurname, currentBirthdate, currentFemale, currentMale);
+  }
 
   render() {
-    const { value, agreed } = this.state;
-
     return (
-      <form className={styles.list} onSubmit={this.handleSubmit}>
-        <Name />
-
+      <form className={styles.list} onSubmit={this.handleChange}>
         <label>
           <input
-            className={styles.input}
             type="text"
+            ref={this.name}
+            className={styles.input}
+            name="name"
+            placeholder="First Name"
+            required
+            autoFocus
+          />
+        </label>
+        <label>
+          <input
+            type="text"
+            ref={this.surname}
+            className={styles.input}
+            placeholder="Last Name"
+            required
+          />
+        </label>
+        <label>
+          Your Birthday
+          <input
+            type="date"
+            name="birthdate"
+            ref={this.birthdate}
+            className={styles.input}
             placeholder="Your Birthday"
-            value={value}
-            onChange={this.handleChange}
+            required
           />
         </label>
-        <label>
-          Male
-          <input
-            type="radio"
-            // checked={gender === Gender.MALE}
-            name="gender"
-            // value={Gender.MALE}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label>
-          Female
-          <input
-            type="radio"
-            // checked={gender === Gender.FEMALE}
-            name="gender"
-            // value={Gender.FEMALE}
-            onChange={this.handleChange}
-          />
-        </label>
-        {/* <label>
-          <input
-            className={styles.input}
-            type="text"
-            placeholder=""
-            value={value}
-            onChange={this.handleChange}
-          />
-        </label> */}
-        <label>
-          <input
-            className={styles.input}
-            type="text"
-            placeholder="Your Country"
-            value={value}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label>
-          <input type="checkbox" checked={agreed} onChange={this.handleChangeCheckbox} />I am not a
-          robot
-        </label>
-        <label>
-          <input type="checkbox" checked={agreed} onChange={this.handleChangeCheckbox} />
-          Agree to terms
-        </label>
-        <label>
-          <input
-            className={styles.input}
-            type="text"
-            placeholder=""
-            value={value}
-            onChange={this.handleChange}
-          />
-          Avatar
-        </label>
+        <div className={styles.gender}>
+          <label>
+            Male
+            <input
+              type="radio"
+              name="gender"
+              value="male"
+              ref={this.male}
+              className={styles.gender_radio}
+              required
+            />
+          </label>
+          <label>
+            Female
+            <input
+              type="radio"
+              name="gender"
+              value="female"
+              ref={this.female}
+              className={styles.gender_radio}
+              required
+            />
+          </label>
+        </div>
 
         <button className={styles.form_button} type="submit">
-          SUBMIT {value}
+          SUBMIT
         </button>
       </form>
     );

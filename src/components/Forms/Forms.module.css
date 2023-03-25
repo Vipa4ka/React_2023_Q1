@@ -34,3 +34,9 @@
   font-size: 18px;
   cursor: pointer;
 }
+
+.gender {
+  display: flex;
+}
+.gender_radio {
+}
