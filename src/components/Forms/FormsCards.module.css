@@ -8,7 +8,6 @@
 }
 
 .list_cards {
-  /* display: block; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -22,7 +21,6 @@
   background-color: #dffcc6;
   border: double #88cd88;
   border-radius: 4px;
-  /* width: 200px; */
 }
 .avatarFoto {
   width: 200px;

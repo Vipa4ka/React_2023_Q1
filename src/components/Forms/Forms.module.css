@@ -74,3 +74,14 @@
 .checkbox {
   margin-right: 20px;
 }
+
+.message {
+  background-color: #88cd88;
+  margin: 20px;
+  text-align: center;
+  height: 60px;
+  padding: 30px 10px 5px;
+  border-radius: 4px;
+  background-color: #dffcc6;
+  border: double #88cd88;
+}

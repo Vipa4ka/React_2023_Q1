@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import HeadTitle from '../components/HeadTitle';
 import Forms from '../components/Forms';
-import CardForm from '../components/Forms/FormCards';
+import CardForm from '../components/Forms/CardForm';
 
 export type FormCards = {
   name: string;
@@ -12,6 +12,7 @@ export type FormCards = {
   avatar: string;
   consent: string;
   consentNews: string;
+  id: number;
 };
 
 interface FormState {

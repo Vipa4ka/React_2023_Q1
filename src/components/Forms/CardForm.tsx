@@ -11,9 +11,9 @@ class CardForm extends Component<FormProps> {
       <div>
         <ul className={styles.group}>
           {cards?.map(
-            ({ name, surname, birthdate, gender, country, avatar, consent, consentNews }) => {
+            ({ id, name, surname, birthdate, gender, country, avatar, consent, consentNews }) => {
               return (
-                <li key={Date.now()} className={styles.list_cards}>
+                <li key={id} className={styles.list_cards}>
                   <img src={avatar} alt="avatar" className={styles.avatarFoto} />
                   <p>
                     {name} {surname}

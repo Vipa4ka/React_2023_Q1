@@ -3,7 +3,11 @@ import { Component, createRef } from 'react';
 import avatarImg from './avatar.png';
 import { FormProps } from '../../pages/Form';
 
-class Forms extends Component<FormProps> {
+type State = {
+  message: boolean;
+};
+
+class Forms extends Component<FormProps, State> {
   constructor(props: FormProps) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -16,6 +20,10 @@ class Forms extends Component<FormProps> {
     this.avatar = createRef();
     this.checkboxConsent = createRef();
     this.checkboxNews = createRef();
+
+    this.state = {
+      message: false,
+    };
   }
 
   name: React.RefObject<HTMLInputElement>;
@@ -50,7 +58,6 @@ class Forms extends Component<FormProps> {
     const currentFemale = (female.current as HTMLInputElement).checked;
     const currentMale = (male.current as HTMLInputElement).checked;
     const currentCountry = (country.current as HTMLSelectElement).value;
-    // const currentAvatar = (avatar.current as HTMLInputElement).value;
     const currentCheckboxConsent = (checkboxConsent.current as HTMLInputElement).checked;
     const currentCheckboxNews = (checkboxNews.current as HTMLInputElement).checked;
 
@@ -80,6 +87,7 @@ class Forms extends Component<FormProps> {
 
     onSubmitForms &&
       onSubmitForms({
+        id: Date.now(),
         name: currentName,
         surname: currentSurname,
         birthdate: currentBirthdate,
@@ -90,6 +98,22 @@ class Forms extends Component<FormProps> {
         consentNews: consentNews,
       });
 
+    this.onSubmitMessage();
+    this.onReset();
+  }
+
+  onReset = () => {
+    const {
+      name,
+      surname,
+      birthdate,
+      female,
+      male,
+      country,
+      avatar,
+      checkboxConsent,
+      checkboxNews,
+    } = this;
     (name.current as HTMLInputElement).value = '';
     (surname.current as HTMLInputElement).value = '';
     (birthdate.current as HTMLInputElement).value = '';
@@ -99,9 +123,18 @@ class Forms extends Component<FormProps> {
     (avatar.current as HTMLInputElement).value = '';
     (checkboxConsent.current as HTMLInputElement).checked = false;
     (checkboxNews.current as HTMLInputElement).checked = false;
-  }
+  };
+
+  onSubmitMessage = () => {
+    this.setState({ message: true });
+
+    setTimeout(() => {
+      this.setState({ message: false });
+    }, 3000);
+  };
 
   render() {
+    const { message } = this.state;
     return (
       <form className={styles.list} onSubmit={this.handleChange}>
         <label>
@@ -122,6 +155,8 @@ class Forms extends Component<FormProps> {
             className={styles.input}
             name="name"
             placeholder="First Name"
+            pattern="^[A-ZА-ЯЁ]{1}[a-zа-яё]+$"
+            title="The name can only contain letters. For example, Adrian, Jacob, Charles."
             required
             autoFocus
           />
@@ -132,6 +167,8 @@ class Forms extends Component<FormProps> {
             ref={this.surname}
             className={styles.input}
             placeholder="Last Name"
+            pattern="^[A-ZА-ЯЁ]{1}[a-zа-яё]+$"
+            title="The name can only contain letters. For example, Adrian, Jacob, Charles."
             required
           />
         </label>
@@ -143,6 +180,8 @@ class Forms extends Component<FormProps> {
             ref={this.birthdate}
             className={styles.input}
             placeholder="Your Birthday"
+            pattern="/^\d{2}-\d{2}-\d{4}$/"
+            title="Please enter the date of birth in the DD-MM-YYYY format."
             required
           />
         </label>
@@ -199,6 +238,7 @@ class Forms extends Component<FormProps> {
         <button className={styles.form_button} type="submit">
           SUBMIT
         </button>
+        {message && <div className={styles.message}>Your data has been saved</div>}
       </form>
     );
   }
