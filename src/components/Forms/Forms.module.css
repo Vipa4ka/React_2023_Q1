@@ -5,6 +5,17 @@
   width: 400px;
 }
 
+.avatar {
+  display: block;
+  width: 150px;
+  border-radius: 8%;
+  margin: 0 auto 23px;
+}
+.input_avatar {
+  display: block;
+  margin: 10px auto;
+}
+
 .input {
   height: 50px;
   width: 344px;
@@ -17,6 +28,7 @@
   padding-right: 4px;
   font: inherit;
   font-size: 17px;
+  outline: none;
 }
 
 .form_button {
@@ -37,6 +49,16 @@
 
 .gender {
   display: flex;
+  margin: 10px auto;
 }
 .gender_radio {
+  margin: 0 20px;
+}
+
+.label_country {
+  display: flex;
+  margin: 10px auto;
+}
+.select_country {
+  height: 20px;
 }
