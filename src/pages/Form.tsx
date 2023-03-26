@@ -36,7 +36,6 @@ class Form extends Component<FormProps, FormState> {
 
   render() {
     const { cards } = this.state;
-    console.log(cards);
     return (
       <>
         <HeadTitle>Form</HeadTitle>

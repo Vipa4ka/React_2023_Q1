@@ -1,0 +1,36 @@
+.group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+
+  width: 100%;
+  margin: 50px 0px;
+}
+
+.list_cards {
+  /* display: block; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  max-width: 280px;
+  width: 80%;
+  height: 400px;
+  background-color: #dffcc6;
+  border: double #88cd88;
+  border-radius: 4px;
+  /* width: 200px; */
+}
+.avatarFoto {
+  width: 200px;
+  height: 200px;
+  border: none;
+  border-radius: 50%;
+}
+
+p {
+  margin: 2px;
+}

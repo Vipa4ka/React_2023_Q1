@@ -50,9 +50,12 @@ class Forms extends Component<FormProps> {
     const currentFemale = (female.current as HTMLInputElement).checked;
     const currentMale = (male.current as HTMLInputElement).checked;
     const currentCountry = (country.current as HTMLSelectElement).value;
-    const currentAvatar = (avatar.current as HTMLInputElement).value;
+    // const currentAvatar = (avatar.current as HTMLInputElement).value;
     const currentCheckboxConsent = (checkboxConsent.current as HTMLInputElement).checked;
     const currentCheckboxNews = (checkboxNews.current as HTMLInputElement).checked;
+
+    const avatarImg = avatar.current?.files?.[0];
+    const fotoAvatar = avatarImg ? URL.createObjectURL(avatarImg) : '';
 
     let gender = '';
     if (currentFemale) {
@@ -82,7 +85,7 @@ class Forms extends Component<FormProps> {
         birthdate: currentBirthdate,
         gender: gender,
         country: currentCountry,
-        avatar: currentAvatar,
+        avatar: fotoAvatar,
         consent: consent,
         consentNews: consentNews,
       });
