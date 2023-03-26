@@ -49,7 +49,7 @@
 
 .gender {
   display: flex;
-  margin: 10px auto;
+  margin: 15px auto;
 }
 .gender_radio {
   margin: 0 20px;
@@ -61,4 +61,16 @@
 }
 .select_country {
   height: 20px;
+}
+
+.label_checkbox {
+  margin: 5px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.checkbox {
+  margin-right: 20px;
 }

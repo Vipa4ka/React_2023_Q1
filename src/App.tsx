@@ -3,7 +3,7 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFoundPage';
 import AboutUs from './pages/AboutUs';
 import { Layout } from './components/Layout';
-import Form from './pages/Forms';
+import Form from './pages/Form';
 
 function App() {
   return (
