@@ -182,6 +182,8 @@ class Forms extends Component<FormProps, State> {
             placeholder="Your Birthday"
             pattern="/^\d{2}-\d{2}-\d{4}$/"
             title="Please enter the date of birth in the DD-MM-YYYY format."
+            min="1920-01-01"
+            max="2010-01-01"
             required
           />
         </label>

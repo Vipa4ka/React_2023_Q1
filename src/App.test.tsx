@@ -32,4 +32,14 @@ describe('App component', () => {
 
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/404 Not Found/i);
   });
+
+  it('renders  page Form us when you go to  /forms', () => {
+    render(
+      <MemoryRouter initialEntries={['/forms']}>
+        <App />
+      </MemoryRouter>
+    );
+
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/Form/i);
+  });
 });

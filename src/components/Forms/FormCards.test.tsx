@@ -9,7 +9,10 @@ describe('Forms', () => {
     expect(screen.queryByText(/the name is capitalized.*/i)).toBeNull();
 
     const firstName = screen.getByPlaceholderText(/First Name/i);
-    fireEvent.change(firstName, { target: { value: 'masha' } });
+    fireEvent.change(firstName, { target: { value: 'Masha' } });
+
+    const countryLabel = screen.getByLabelText('Your country:');
+    fireEvent.change(countryLabel, { target: { value: 'Germany' } });
   });
 
   it('Last name ', () => {
@@ -17,11 +20,11 @@ describe('Forms', () => {
     expect(screen.queryByText(/the name is capitalized.*/i)).toBeNull();
 
     const lastName = screen.getByPlaceholderText(/Last Name/i);
-    fireEvent.change(lastName, { target: { value: 'masha' } });
+    fireEvent.change(lastName, { target: { value: 'Bhdsk' } });
   });
 
   it('Birthday', () => {
-    render(<Forms onSubmitForms={() => {}} />);
+    render(<Forms />);
 
     const birthday = screen.getByLabelText(/Your Birthday/i);
     fireEvent.change(birthday, { target: { value: '1999-11-12' } });
