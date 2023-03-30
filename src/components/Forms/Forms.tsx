@@ -5,6 +5,13 @@ import { FormProps } from '../../pages/Form';
 
 type State = {
   message: boolean;
+  nameInput: string;
+  surnameInput: string;
+  dateInput: string;
+  countrySelect: string;
+  genderInput: string;
+  checkboxConsentInput: string;
+  avatarInput: string;
 };
 
 class Forms extends Component<FormProps, State> {
@@ -23,6 +30,13 @@ class Forms extends Component<FormProps, State> {
 
     this.state = {
       message: false,
+      nameInput: '',
+      surnameInput: '',
+      dateInput: '',
+      countrySelect: '',
+      genderInput: '',
+      checkboxConsentInput: '',
+      avatarInput: '',
     };
   }
 
@@ -84,22 +98,111 @@ class Forms extends Component<FormProps, State> {
     } else {
       consentNews = 'No';
     }
+    const validateAvatar = this.reviewAvatar(fotoAvatar);
+    const validateName = this.reviewName(currentName);
+    const validateSurname = this.reviewSurname(currentSurname);
+    const validateBirthdate = this.reviewBirthdate(currentBirthdate);
+    const validateCountry = this.reviewCountry(currentCountry);
+    const validateGender = this.reviewGender(currentFemale, currentMale);
+    const validateCheckboxConsent = this.reviewCheckboxConsent(currentCheckboxConsent);
 
-    onSubmitForms &&
-      onSubmitForms({
-        id: Date.now(),
-        name: currentName,
-        surname: currentSurname,
-        birthdate: currentBirthdate,
-        gender: gender,
-        country: currentCountry,
-        avatar: fotoAvatar,
-        consent: consent,
-        consentNews: consentNews,
-      });
+    if (
+      validateAvatar &&
+      validateName &&
+      validateSurname &&
+      validateBirthdate &&
+      validateCountry &&
+      validateGender &&
+      validateCheckboxConsent
+    ) {
+      onSubmitForms &&
+        onSubmitForms({
+          id: Date.now(),
+          name: currentName,
+          surname: currentSurname,
+          birthdate: currentBirthdate,
+          gender: gender,
+          country: currentCountry,
+          avatar: fotoAvatar,
+          consent: consent,
+          consentNews: consentNews,
+        });
+      this.onReset();
+      this.onSubmitMessage();
+    }
+  }
 
-    this.onSubmitMessage();
-    this.onReset();
+  reviewAvatar(photo: string) {
+    if (photo === '') {
+      this.setState({ avatarInput: 'Add profile photo' });
+      return false;
+    }
+    this.setState({ avatarInput: '' });
+    return true;
+  }
+
+  reviewName(name: string) {
+    if (name.length < 3) {
+      this.setState({ nameInput: 'The name  contains less than 3 symbols' });
+      return false;
+    } else if (!/^[A-ZА-Я]/.test(name)) {
+      this.setState({ nameInput: 'The name  must start with uppercase' });
+      return false;
+    } else if (/[0-9\.,-\/#!$%' "^&*;:{}=_`~()-]/.test(name)) {
+      this.setState({ nameInput: 'The name is wrong' });
+      return false;
+    }
+    this.setState({ nameInput: '' });
+    return true;
+  }
+  reviewSurname(name: string) {
+    if (name.length < 3) {
+      this.setState({ surnameInput: 'The  surname contains less than 3 symbols' });
+      return false;
+    } else if (!/^[A-ZА-Я]/.test(name)) {
+      this.setState({ surnameInput: 'The surname must start with uppercase' });
+      return false;
+    } else if (/[0-9\.,-\/#!$%' "^&*;:{}=_`~()-]/.test(name)) {
+      this.setState({ surnameInput: 'The surname is wrong' });
+      return false;
+    }
+    this.setState({ surnameInput: '' });
+    return true;
+  }
+
+  reviewBirthdate(date: string) {
+    if (date === '') {
+      this.setState({ dateInput: 'Input date of birthdate' });
+      return false;
+    }
+    this.setState({ dateInput: '' });
+    return true;
+  }
+
+  reviewCountry(country: string) {
+    if (country === 'Choose') {
+      this.setState({ countrySelect: 'Choose the country' });
+      return false;
+    }
+    this.setState({ countrySelect: '' });
+    return true;
+  }
+
+  reviewGender(female: boolean, male: boolean) {
+    if (!female && !male) {
+      this.setState({ genderInput: 'Choose the  gender' });
+      return false;
+    }
+    this.setState({ genderInput: '' });
+    return true;
+  }
+  reviewCheckboxConsent(checkbox: boolean) {
+    if (!checkbox) {
+      this.setState({ checkboxConsentInput: 'Agree consent to my personal data' });
+      return false;
+    }
+    this.setState({ checkboxConsentInput: '' });
+    return true;
   }
 
   onReset = () => {
@@ -130,11 +233,20 @@ class Forms extends Component<FormProps, State> {
 
     setTimeout(() => {
       this.setState({ message: false });
-    }, 3000);
+    }, 3000000);
   };
 
   render() {
-    const { message } = this.state;
+    const {
+      message,
+      nameInput,
+      surnameInput,
+      dateInput,
+      countrySelect,
+      genderInput,
+      checkboxConsentInput,
+      avatarInput,
+    } = this.state;
     return (
       <form className={styles.list} onSubmit={this.handleChange}>
         <label>
@@ -147,6 +259,7 @@ class Forms extends Component<FormProps, State> {
             placeholder="Avarat"
             accept="image/*"
           />
+          {avatarInput && <div className={styles.input_err}>{avatarInput}</div>}
         </label>
         <label>
           <input
@@ -155,22 +268,13 @@ class Forms extends Component<FormProps, State> {
             className={styles.input}
             name="name"
             placeholder="First Name"
-            pattern="^[A-ZА-ЯЁ]{1}[a-zа-яё]+$"
-            title="The name can only contain letters. For example, Adrian, Jacob, Charles."
-            required
             autoFocus
           />
+          {nameInput && <div className={styles.input_err}>{nameInput}</div>}
         </label>
         <label>
-          <input
-            type="text"
-            ref={this.surname}
-            className={styles.input}
-            placeholder="Last Name"
-            pattern="^[A-ZА-ЯЁ]{1}[a-zа-яё]+$"
-            title="The name can only contain letters. For example, Adrian, Jacob, Charles."
-            required
-          />
+          <input type="text" ref={this.surname} className={styles.input} placeholder="Last Name" />
+          {surnameInput && <div className={styles.input_err}>{surnameInput}</div>}
         </label>
         <label>
           Your Birthday
@@ -180,39 +284,50 @@ class Forms extends Component<FormProps, State> {
             ref={this.birthdate}
             className={styles.input}
             placeholder="Your Birthday"
-            pattern="/^\d{2}-\d{2}-\d{4}$/"
-            title="Please enter the date of birth in the DD-MM-YYYY format."
             min="1920-01-01"
             max="2010-01-01"
-            required
           />
+          {dateInput && <div className={styles.input_err}>{dateInput}</div>}
         </label>
-
-        <label htmlFor="country">Your country:</label>
-        <select className={styles.input} id="country" name="country" ref={this.country} required>
-          <option value="">Choose the country</option>
-          <option value="Poland">Poland</option>
-          <option value="Bulgaria">Bulgaria</option>
-          <option value="Germany">Germany</option>
-          <option value="Romania">Romania</option>
-          <option value="other">other</option>
-        </select>
+        <label htmlFor="country">
+          Your country:
+          <select
+            className={styles.input}
+            id="country"
+            name="country"
+            defaultValue={'Choose'}
+            ref={this.country}
+          >
+            <option defaultChecked value="Choose">
+              Choose the country
+            </option>
+            <option value="Poland">Poland</option>
+            <option value="Bulgaria">Bulgaria</option>
+            <option value="Germany">Germany</option>
+            <option value="Romania">Romania</option>
+            <option value="other">other</option>
+          </select>
+          {countrySelect && <div className={styles.input_err}>{countrySelect}</div>}
+        </label>
         <div className={styles.gender}>
-          <label className={styles.gender_radio}>
-            Male
-            <input type="radio" name="gender" alt="Male" value="male" ref={this.male} required />
-          </label>
-          <label className={styles.gender_radio}>
-            Female
-            <input
-              type="radio"
-              name="gender"
-              alt="Female"
-              value="female"
-              ref={this.female}
-              className={styles.gender_radio}
-              required
-            />
+          <label>
+            Gender:
+            <label className={styles.gender_radio}>
+              Male
+              <input type="radio" name="gender" alt="Male" value="male" ref={this.male} />
+            </label>
+            <label className={styles.gender_radio}>
+              Female
+              <input
+                type="radio"
+                name="gender"
+                alt="Female"
+                value="female"
+                ref={this.female}
+                className={styles.gender_radio}
+              />
+            </label>
+            {genderInput && <div className={styles.input_err}>{genderInput}</div>}
           </label>
         </div>
         <label htmlFor="checkboxConsent" className={styles.label_checkbox}>
@@ -222,9 +337,9 @@ class Forms extends Component<FormProps, State> {
             name="checkboxConsent"
             id="checkboxConsent"
             ref={this.checkboxConsent}
-            required
           />
           I consent to my personal data
+          {checkboxConsentInput && <div className={styles.input_err}>{checkboxConsentInput}</div>}
         </label>
         <label htmlFor="checkboxNews" className={styles.label_checkbox}>
           <input
@@ -236,7 +351,6 @@ class Forms extends Component<FormProps, State> {
           />
           Receive news about promotions
         </label>
-
         <button className={styles.form_button} type="submit">
           SUBMIT
         </button>
