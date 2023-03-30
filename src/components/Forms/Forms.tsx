@@ -233,7 +233,7 @@ class Forms extends Component<FormProps, State> {
 
     setTimeout(() => {
       this.setState({ message: false });
-    }, 3000000);
+    }, 1500);
   };
 
   render() {
