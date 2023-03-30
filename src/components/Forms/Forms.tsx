@@ -1,7 +1,16 @@
 import styles from './Forms.module.css';
 import { Component, createRef } from 'react';
-import avatarImg from './avatar.png';
+// import avatarImg from './avatar.png';
 import { FormProps } from '../../pages/Form';
+// import valid from './validation';
+import Avatar from './formsComponent/Avatar';
+import Name from './formsComponent/Name';
+import Surname from './formsComponent/surname';
+import Birthdate from './formsComponent/Birthdate';
+import Country from './formsComponent/Country';
+import Gender from './formsComponent/Gender';
+import CheckboxConsent from './formsComponent/checkboxConsent';
+import CheckboxNews from './formsComponent/CheckboxNews';
 
 type State = {
   message: boolean;
@@ -239,118 +248,25 @@ class Forms extends Component<FormProps, State> {
   render() {
     const {
       message,
-      nameInput,
-      surnameInput,
-      dateInput,
-      countrySelect,
-      genderInput,
-      checkboxConsentInput,
-      avatarInput,
+      // nameInput,
+      // surnameInput,
+      // dateInput,
+      // countrySelect,
+      // genderInput,
+      // checkboxConsentInput,
+      // avatarInput,
     } = this.state;
     return (
       <form className={styles.list} onSubmit={this.handleChange}>
-        <label>
-          <img className={styles.avatar} src={avatarImg} alt="avatarImg" />
-          <input
-            className={styles.input_avatar}
-            type="file"
-            name="avatar"
-            ref={this.avatar}
-            placeholder="Avarat"
-            accept="image/*"
-          />
-          {avatarInput && <div className={styles.input_err}>{avatarInput}</div>}
-        </label>
-        <label>
-          <input
-            type="text"
-            ref={this.name}
-            className={styles.input}
-            name="name"
-            placeholder="First Name"
-            autoFocus
-          />
-          {nameInput && <div className={styles.input_err}>{nameInput}</div>}
-        </label>
-        <label>
-          <input type="text" ref={this.surname} className={styles.input} placeholder="Last Name" />
-          {surnameInput && <div className={styles.input_err}>{surnameInput}</div>}
-        </label>
-        <label>
-          Your Birthday
-          <input
-            type="date"
-            name="birthdate"
-            ref={this.birthdate}
-            className={styles.input}
-            placeholder="Your Birthday"
-            min="1920-01-01"
-            max="2010-01-01"
-          />
-          {dateInput && <div className={styles.input_err}>{dateInput}</div>}
-        </label>
-        <label htmlFor="country">
-          Your country:
-          <select
-            className={styles.input}
-            id="country"
-            name="country"
-            defaultValue={'Choose'}
-            ref={this.country}
-          >
-            <option defaultChecked value="Choose">
-              Choose the country
-            </option>
-            <option value="Poland">Poland</option>
-            <option value="Bulgaria">Bulgaria</option>
-            <option value="Germany">Germany</option>
-            <option value="Romania">Romania</option>
-            <option value="other">other</option>
-          </select>
-          {countrySelect && <div className={styles.input_err}>{countrySelect}</div>}
-        </label>
-        <div className={styles.gender}>
-          <label>
-            Gender:
-            <label className={styles.gender_radio}>
-              Male
-              <input type="radio" name="gender" alt="Male" value="male" ref={this.male} />
-            </label>
-            <label className={styles.gender_radio}>
-              Female
-              <input
-                type="radio"
-                name="gender"
-                alt="Female"
-                value="female"
-                ref={this.female}
-                className={styles.gender_radio}
-              />
-            </label>
-            {genderInput && <div className={styles.input_err}>{genderInput}</div>}
-          </label>
-        </div>
-        <label htmlFor="checkboxConsent" className={styles.label_checkbox}>
-          <input
-            className={styles.checkbox}
-            type="checkbox"
-            name="checkboxConsent"
-            id="checkboxConsent"
-            ref={this.checkboxConsent}
-          />
-          I consent to my personal data
-          {checkboxConsentInput && <div className={styles.input_err}>{checkboxConsentInput}</div>}
-        </label>
-        <label htmlFor="checkboxNews" className={styles.label_checkbox}>
-          <input
-            className={styles.checkbox}
-            type="checkbox"
-            name="checkboxNews"
-            id="checkboxNews"
-            ref={this.checkboxNews}
-          />
-          Receive news about promotions
-        </label>
+        <Avatar avatar={this.avatar} />
+        <Name nameProp={this.name} />
+        <Surname surnameProp={this.surname} />
+        <Birthdate birthdateProp={this.birthdate} />
+        <Country countryProp={this.country} />
+        <Gender maleProp={this.male} femaleProp={this.female} />
+        <CheckboxConsent checkboxConsentProp={this.checkboxConsent} />
+        <CheckboxNews checkboxNewstProp={this.checkboxNews} />
+
         <button className={styles.form_button} type="submit">
           SUBMIT
         </button>
