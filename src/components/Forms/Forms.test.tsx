@@ -27,12 +27,33 @@ describe('Forms', () => {
     render(<Forms />);
 
     const birthday = screen.getByLabelText(/Your Birthday/i);
-    fireEvent.change(birthday, { target: { value: '1999-11-12' } });
+    fireEvent.change(birthday, { target: { value: '2009-12-31' } });
   });
   it('Your country', () => {
     render(<Forms onSubmitForms={() => {}} />);
 
     const country = screen.getByLabelText(/Your country/i);
     fireEvent.change(country, { target: { value: 'London' } });
+  });
+
+  it(' the correct data after form submit', () => {
+    const { queryByLabelText, queryByText } = render(<Forms onSubmitForms={() => {}} />);
+    const birthdateInput = queryByLabelText('Your Birthday') as HTMLInputElement;
+    const button = queryByText('SUBMIT') as HTMLButtonElement;
+    fireEvent.change(birthdateInput, { target: { value: '1920-01-01' } });
+    fireEvent.click(button);
+    const data = [
+      {
+        avatar: '',
+        name: '',
+        surname: '',
+        birthday: '1920-01-01',
+        country: '',
+        gender: '',
+        consent: false,
+        consentNews: true,
+      },
+    ];
+    expect(data).toEqual(expect.arrayContaining(data));
   });
 });

@@ -191,15 +191,15 @@ export default function Forms({ onSubmitForms }: FormProps) {
         <label>
           Gender:
           <label className={styles.gender_radio}>
-            Male
-            <input {...register('gender')} type="radio" alt="Male" value="male" />
+            male
+            <input {...register('gender')} type="radio" alt="male" value="male" />
           </label>
           <label className={styles.gender_radio}>
-            Female
+            female
             <input
               {...register('gender')}
               type="radio"
-              alt="Female"
+              alt="female"
               value="female"
               className={styles.gender_radio}
             />
