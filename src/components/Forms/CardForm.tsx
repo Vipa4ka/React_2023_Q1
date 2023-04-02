@@ -17,8 +17,8 @@ const CardForm = ({ cards }: FormProps) => {
                 <p>Birthdate: {birthdate}</p>
                 <p>Gender: {gender}</p>
                 <p>Country: {country}</p>
-                <p>Consent to personal data: {consent}</p>
-                <p>Consent to receive news: {consentNews}</p>
+                <p>Consent to personal data: {consent ? 'Yes' : 'No'}</p>
+                <p>Consent to receive news: {consentNews ? 'Yes' : 'No'}</p>
               </li>
             );
           }

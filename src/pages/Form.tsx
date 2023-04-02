@@ -10,8 +10,8 @@ export type FormCards = {
   gender: string;
   country: string;
   avatar: string;
-  consent: string;
-  consentNews: string;
+  consent: boolean;
+  consentNews: boolean;
   id: number;
 };
 

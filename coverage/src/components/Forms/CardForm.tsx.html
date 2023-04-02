@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.77% </span>
+                <span class="strong">22.58% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/36</span>
+                <span class='fraction'>7/31</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.77% </span>
+                <span class="strong">22.58% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/36</span>
+                <span class='fraction'>7/31</span>
             </div>
         
             
@@ -94,14 +94,7 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -130,45 +123,37 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component } from 'react';
-import styles from './FormsCards.module.css';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import styles from './FormsCards.module.css';
 &nbsp;
 import { FormProps } from '../../pages/Form';
 &nbsp;
-class CardForm extends Component&lt;FormProps&gt; {
-<span class="fstat-no" title="function not covered" >  render() {</span>
-<span class="cstat-no" title="statement not covered" >    const { cards } = this.props;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    return (</span>
-<span class="cstat-no" title="statement not covered" >      &lt;div&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;ul className={styles.group}&gt;</span>
-<span class="cstat-no" title="statement not covered" >          {cards?.map(</span>
-<span class="cstat-no" title="statement not covered" >            ({ id, name, surname, birthdate, gender, country, avatar, consent, consentNews }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >              return (</span>
-<span class="cstat-no" title="statement not covered" >                &lt;li key={id} className={styles.list_cards}&gt;</span>
-<span class="cstat-no" title="statement not covered" >                  &lt;img src={avatar} alt="avatar" className={styles.avatarFoto} /&gt;</span>
-<span class="cstat-no" title="statement not covered" >                  &lt;p&gt;</span>
-<span class="cstat-no" title="statement not covered" >                    {name} {surname}</span>
-<span class="cstat-no" title="statement not covered" >                  &lt;/p&gt;</span>
-<span class="cstat-no" title="statement not covered" >                  &lt;p&gt;Birthdate: {birthdate}&lt;/p&gt;</span>
-<span class="cstat-no" title="statement not covered" >                  &lt;p&gt;Gender: {gender}&lt;/p&gt;</span>
-<span class="cstat-no" title="statement not covered" >                  &lt;p&gt;Country: {country}&lt;/p&gt;</span>
-<span class="cstat-no" title="statement not covered" >                  &lt;p&gt;Consent to personal data: {consent}&lt;/p&gt;</span>
-<span class="cstat-no" title="statement not covered" >                  &lt;p&gt;Consent to receive news: {consentNews}&lt;/p&gt;</span>
-<span class="cstat-no" title="statement not covered" >                &lt;/li&gt;</span>
-<span class="cstat-no" title="statement not covered" >              );</span>
-<span class="cstat-no" title="statement not covered" >            }</span>
-<span class="cstat-no" title="statement not covered" >          )}</span>
-<span class="cstat-no" title="statement not covered" >        &lt;/ul&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >    );</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
-}
+const CardForm = <span class="fstat-no" title="function not covered" >({ cards }: FormProps) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  return (</span>
+<span class="cstat-no" title="statement not covered" >    &lt;div&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;ul className={styles.group}&gt;</span>
+<span class="cstat-no" title="statement not covered" >        {cards?.map(</span>
+<span class="cstat-no" title="statement not covered" >          ({ id, name, surname, birthdate, gender, country, avatar, consent, consentNews }) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            return (</span>
+<span class="cstat-no" title="statement not covered" >              &lt;li key={id} className={styles.list_cards}&gt;</span>
+<span class="cstat-no" title="statement not covered" >                &lt;img src={avatar} alt="avatar" className={styles.avatarFoto} /&gt;</span>
+<span class="cstat-no" title="statement not covered" >                &lt;p&gt;</span>
+<span class="cstat-no" title="statement not covered" >                  {name} {surname}</span>
+<span class="cstat-no" title="statement not covered" >                &lt;/p&gt;</span>
+<span class="cstat-no" title="statement not covered" >                &lt;p&gt;Birthdate: {birthdate}&lt;/p&gt;</span>
+<span class="cstat-no" title="statement not covered" >                &lt;p&gt;Gender: {gender}&lt;/p&gt;</span>
+<span class="cstat-no" title="statement not covered" >                &lt;p&gt;Country: {country}&lt;/p&gt;</span>
+<span class="cstat-no" title="statement not covered" >                &lt;p&gt;Consent to personal data: {consent ? 'Yes' : 'No'}&lt;/p&gt;</span>
+<span class="cstat-no" title="statement not covered" >                &lt;p&gt;Consent to receive news: {consentNews ? 'Yes' : 'No'}&lt;/p&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;/li&gt;</span>
+<span class="cstat-no" title="statement not covered" >            );</span>
+<span class="cstat-no" title="statement not covered" >          }</span>
+<span class="cstat-no" title="statement not covered" >        )}</span>
+<span class="cstat-no" title="statement not covered" >      &lt;/ul&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >  );</span>
+<span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
 export default CardForm;
 &nbsp;</pre></td></tr></table></pre>
@@ -178,7 +163,7 @@ export default CardForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-26T22:23:44.576Z
+                at 2023-04-02T17:05:04.067Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
