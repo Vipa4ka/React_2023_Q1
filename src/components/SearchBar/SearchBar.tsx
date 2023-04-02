@@ -1,60 +1,52 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './SearchBar.module.css';
 
-interface StateSeach {
-  searchQuery: string;
-}
+function SearchBar() {
+  const [searchQuery, setSearchQuery] = useState(localStorage.getItem('message') ?? '');
+  const [error, setError] = useState(false);
 
-interface PropSearchBar {
-  currentQuery: string;
-  submitProps: (searchQuery: string) => void;
-}
+  useEffect(() => {
+    localStorage.setItem('message', searchQuery);
+  }, [searchQuery]);
 
-class SearchBar extends Component<PropSearchBar, StateSeach> {
-  state = {
-    searchQuery: '',
-  };
-
-  handleSubmit = (event: React.SyntheticEvent) => {
+  const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    const { searchQuery } = this.state;
-    const { submitProps } = this.props;
+    setError(false);
 
     if (searchQuery.trim() === '') {
-      alert('Enter something...');
+      setError(true);
+
       return;
     }
 
-    submitProps(this.state.searchQuery);
-    this.setState({ searchQuery: '' });
+    setSearchQuery('');
   };
 
-  handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const currentSearch = event.currentTarget.value.toLowerCase();
-    this.setState({ searchQuery: currentSearch });
+
+    setSearchQuery(currentSearch);
   };
 
-  render() {
-    const { searchQuery } = this.state;
-    const { currentQuery } = this.props;
-
-    return (
-      <form onSubmit={this.handleSubmit} className={styles.form}>
+  return (
+    <>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <input
           className={styles.input}
           type="text"
           value={searchQuery}
-          onChange={this.handleChange}
+          onChange={handleChange}
           autoComplete="off"
           autoFocus
-          placeholder={currentQuery || 'Search'}
+          placeholder={'Search'}
         />
         <button type="submit" className={styles.button}>
           Search
         </button>
       </form>
-    );
-  }
+      {error && <div className={styles.error}>Enter something ...</div>}
+    </>
+  );
 }
 
 export default SearchBar;

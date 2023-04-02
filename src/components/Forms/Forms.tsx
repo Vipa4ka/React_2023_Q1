@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import styles from './Forms.module.css';
-import avatarImg from './avatar.png';
+import avatarImg from '../../assets/avatar.png';
 import { FormProps } from '../../pages/Form';
 import {
   reviewAvatar,
@@ -82,7 +82,7 @@ export default function Forms({ onSubmitForms }: FormProps) {
       avatarValid === '' &&
       nameValid === '' &&
       surNameValid === '' &&
-      genderValid === '' &&
+      countryValid === '' &&
       birthdateValid === '' &&
       genderValid === '' &&
       consentValid === '';
