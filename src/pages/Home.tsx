@@ -1,15 +1,15 @@
-import CardsListItem from '../components/Cards';
+// import CardsListItem from '../components/Cards';
 import HeadTitle from '../components/HeadTitle';
 import SearchBar from '../components/SearchBar';
 
-import cards from '../card.json';
+// import cards from '../card.json';
 
 function HomePage() {
   return (
     <>
-      <HeadTitle>VEGETABLES AND FRUITS</HeadTitle>
+      <HeadTitle>MOVIES</HeadTitle>
       <SearchBar />
-      <CardsListItem cards={cards} />
+      {/* <CardsListItem cards={cards} /> */}
     </>
   );
 }

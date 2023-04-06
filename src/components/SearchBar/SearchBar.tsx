@@ -38,7 +38,7 @@ function SearchBar() {
           onChange={handleChange}
           autoComplete="off"
           autoFocus
-          placeholder={'Search'}
+          placeholder={'Search movies...'}
         />
         <button type="submit" className={styles.button}>
           Search
