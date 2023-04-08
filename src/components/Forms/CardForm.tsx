@@ -1,6 +1,6 @@
 import styles from './FormsCards.module.css';
 
-import { FormProps } from '../../pages/Form';
+import { FormProps } from '../../types/index';
 
 const CardForm = ({ cards }: FormProps) => {
   return (

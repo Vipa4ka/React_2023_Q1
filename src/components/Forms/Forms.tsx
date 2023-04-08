@@ -2,7 +2,8 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import styles from './Forms.module.css';
 import avatarImg from '../../assets/avatar.png';
-import { FormProps } from '../../pages/Form';
+import { State, IFormInput, FormProps } from '../../types/index';
+
 import {
   reviewAvatar,
   reviewName,
@@ -12,27 +13,6 @@ import {
   reviewGender,
   reviewCheckboxConsent,
 } from '../Forms/validation';
-
-type State = {
-  nameInput: string;
-  surnameInput: string;
-  dateInput: string;
-  countrySelect: string;
-  genderInput: string;
-  checkboxConsentInput: string;
-  avatarInput: string;
-};
-
-interface IFormInput {
-  avatar: File[];
-  name: string;
-  surname: string;
-  birthdate: string;
-  country: string;
-  gender: string;
-  consent: boolean;
-  consentNews: boolean;
-}
 
 export default function Forms({ onSubmitForms }: FormProps) {
   const { register, handleSubmit, reset } = useForm<IFormInput>();

@@ -2,23 +2,7 @@ import { useState } from 'react';
 import HeadTitle from '../components/HeadTitle';
 import Forms from '../components/Forms';
 import CardForm from '../components/Forms/CardForm';
-
-export type FormCards = {
-  name: string;
-  surname: string;
-  birthdate: string;
-  gender: string;
-  country: string;
-  avatar: string;
-  consent: boolean;
-  consentNews: boolean;
-  id: number;
-};
-
-export interface FormProps {
-  onSubmitForms?: (newCard: FormCards) => void;
-  cards?: FormCards[];
-}
+import { FormCards } from '../types/index';
 
 export default function Form() {
   const [cards, setCards] = useState<FormCards[]>([]);

@@ -1,16 +1,5 @@
 import styles from './Cards.module.css';
-
-type Card = {
-  id: string;
-  name: string;
-  image: string;
-  price: number;
-  quantity: number;
-};
-
-interface CardProps {
-  cards: Card[];
-}
+import { CardProps } from '../../types/index';
 
 const CardsListItem = ({ cards }: CardProps) => {
   return (

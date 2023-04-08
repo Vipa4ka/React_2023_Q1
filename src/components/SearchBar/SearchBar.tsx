@@ -15,7 +15,6 @@ function SearchBar() {
 
     if (searchQuery.trim() === '') {
       setError(true);
-
       return;
     }
 
