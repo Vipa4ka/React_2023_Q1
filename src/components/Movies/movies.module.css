@@ -22,10 +22,6 @@ li {
   color: #1d6c1d;
 }
 
-.film {
-  display: flex;
-}
-
 .button {
   margin: 20px;
   color: rgb(22, 87, 44);
@@ -60,14 +56,4 @@ li {
   display: block;
   padding: 0;
   color: rgb(22, 87, 44);
-}
-
-.modal__cross {
-  width: 15px;
-  height: 15px;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  fill: #444;
-  cursor: pointer;
 }

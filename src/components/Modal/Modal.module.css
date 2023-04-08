@@ -30,6 +30,9 @@
   fill: #444;
   cursor: pointer;
 }
+.film {
+  display: flex;
+}
 .list {
   display: flex;
   width: 100px;
@@ -58,6 +61,13 @@ p {
   font-weight: 600;
   margin-right: 10px;
   font-style: normal;
+}
+.info_card {
+  margin: 0 15px;
+}
+
+.homepage {
+  color: #46c772;
 }
 .title {
   text-align: center;
