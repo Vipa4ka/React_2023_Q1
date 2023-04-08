@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import * as Api from '../../services/Api';
 import styles from '../Movies/movies.module.css';
 import styleModal from './Modal.module.css';
+import notImage from '../../assets/notImage.png';
 import avatar from '../../assets/avatar.png';
 import { Film, MovieId } from '../../types/index';
 
@@ -32,7 +33,7 @@ export default function Modal({ idCardMovies, onClose }: MovieId) {
           </svg>
           <div className={styles.film}>
             <img
-              className={styles.filmDetails}
+              className={styleModal.img_total}
               src={
                 modalFilm.poster_path
                   ? `https://image.tmdb.org/t/p/w300/${modalFilm.poster_path}`
@@ -41,19 +42,91 @@ export default function Modal({ idCardMovies, onClose }: MovieId) {
               alt={modalFilm.title}
             />
             <div>
-              <h1>{modalFilm.title}</h1>
-              <p>User Score:{modalFilm.vote_average}</p>
-              <p>Overview:{modalFilm.overview}</p>
-              <h3>Genres</h3>
-              <ul className={styles.filmsGenres}>
-                {modalFilm.genres.map((film) => (
-                  <li key={film.id}>{film.name}</li>
-                ))}
-              </ul>
+              <h1 className={styleModal.title}>{modalFilm.title}</h1>
+              <h2 className={styleModal.title}>{modalFilm.tagline}</h2>
+              <p>
+                <span className={styleModal.span}>Overview:</span> {modalFilm.overview}
+              </p>
+              <p>
+                <span className={styleModal.span}>Homepage:</span>
+                {modalFilm.homepage ? (
+                  <a href={modalFilm.homepage}>{modalFilm.homepage}</a>
+                ) : (
+                  ' Site not listed'
+                )}
+              </p>
+              <p>
+                <span className={styleModal.span}> Genres:</span>
+
+                {modalFilm.genres.map((film) => '|' + film.name + '|')}
+              </p>
+              <p>
+                <span className={styleModal.span}> Original language:</span>
+                {modalFilm.original_language}
+              </p>
+              <p>
+                <span className={styleModal.span}> Spoken languages:</span>
+
+                {modalFilm.spoken_languages.length > 0
+                  ? modalFilm.spoken_languages.map((language) => '|' + language.english_name + '|')
+                  : ' Not specified'}
+              </p>
+              <p>
+                <span className={styleModal.span}> User Score:</span>
+                {modalFilm.vote_average}
+              </p>
+              <p>
+                <span className={styleModal.span}> Vote count:</span>
+                {modalFilm.vote_count}
+              </p>
+              <p>
+                <span className={styleModal.span}> Popularity:</span>
+                {modalFilm.popularity}
+              </p>
+              <p>
+                <span className={styleModal.span}> Budget:</span>
+                {modalFilm.budget > 0 ? modalFilm.budget : ' Not specified'}
+              </p>
+              <p>
+                <span className={styleModal.span}> Revenue:</span>
+                {modalFilm.revenue > 0 ? modalFilm.revenue : ' Not specified'}
+              </p>
+              <p>
+                <span className={styleModal.span}> Release date:</span>
+                {modalFilm.release_date}
+              </p>
+              <p>
+                <span className={styleModal.span}> Runtime:</span>
+                {modalFilm.runtime}
+              </p>
+              <p>
+                <span className={styleModal.span}> Status:</span>
+                {modalFilm.status}
+              </p>
             </div>
           </div>
           <div>
-            <h4>Additional information</h4>
+            <h4 className={styleModal.span}>Additional information</h4>
+            <div className={styleModal.company}>
+              <span className={styleModal.span}> Production companies:</span>
+
+              {modalFilm.production_companies.length > 0
+                ? modalFilm.production_companies.map((film) => (
+                    <div className={styleModal.list} key={film.id}>
+                      <img
+                        className={styleModal.company_img}
+                        src={
+                          film.logo_path
+                            ? `https://image.tmdb.org/t/p/w300/${film.logo_path}`
+                            : notImage
+                        }
+                        alt={film.name}
+                      />
+                      <span>{film.name}</span>
+                    </div>
+                  ))
+                : '  Not specified'}
+            </div>
           </div>
         </div>
       )}

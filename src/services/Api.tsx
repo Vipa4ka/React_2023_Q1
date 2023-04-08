@@ -7,7 +7,7 @@ async function fetchError(url = '', config = {}) {
 }
 //список самых популярных фильмов на сегодня
 export function fetchPopularFilms() {
-  return fetchError(`${BASE_URL}/trending/all/day?api_key=${API_KEY}`);
+  return fetchError(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`);
 }
 
 // //поиск кинофильма по ключевому слову на странице фильмов

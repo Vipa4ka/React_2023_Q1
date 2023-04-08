@@ -13,7 +13,6 @@ export default function Movies({ onClickFilm }: ClickFilm) {
 
   return (
     <div>
-      <h1>Trending Today</h1>
       {films && (
         <ul className={styles.homePage}>
           {films.map((film) => (
