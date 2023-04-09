@@ -62,3 +62,9 @@ li {
   width: 380px;
   height: 450px;
 }
+
+.load {
+  width: 500px;
+  margin: 0 auto;
+  display: block;
+}

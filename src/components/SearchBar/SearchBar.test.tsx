@@ -1,11 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-
+import { describe, expect, vi } from 'vitest';
 import SearchBar from './SearchBar';
 
 describe('SearchBar', () => {
+  const setSearch = vi.fn();
   it('correct render ', () => {
-    const { getByPlaceholderText, getByText } = render(<SearchBar />);
-    const input = getByPlaceholderText('Search');
+    const { getByPlaceholderText, getByText } = render(<SearchBar setSearch={setSearch} />);
+    const input = getByPlaceholderText('Search movies...');
     const Btn = getByText('Search');
 
     expect(input).toBeInTheDocument();
@@ -13,8 +14,8 @@ describe('SearchBar', () => {
   });
 
   it('test SearchQuery ', () => {
-    const { getByPlaceholderText, getByText } = render(<SearchBar />);
-    const input = getByPlaceholderText('Search');
+    const { getByPlaceholderText, getByText } = render(<SearchBar setSearch={setSearch} />);
+    const input = getByPlaceholderText('Search movies...');
     const Btn = getByText('Search');
 
     fireEvent.change(input, { target: { value: 'test' } });
@@ -22,7 +23,7 @@ describe('SearchBar', () => {
   });
 
   it('test placeholder without', () => {
-    render(<SearchBar />);
+    render(<SearchBar setSearch={setSearch} />);
 
     expect(screen.getByPlaceholderText(/search/i)).toBeInTheDocument();
   });

@@ -10,7 +10,7 @@ describe('App component', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/VEGETABLES AND FRUITS/i);
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/MOVIES/i);
   });
 
   it('renders  page About us when you go to  /about', () => {

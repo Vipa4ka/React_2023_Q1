@@ -4,13 +4,20 @@ import * as Api from '../../services/Api';
 import styleModal from './Modal.module.css';
 import notImage from '../../assets/notImage.png';
 import avatar from '../../assets/avatar.png';
+import load from '../../assets/loading.gif';
 import { Film, MovieId } from '../../types/index';
+import styles from '../Movies/movies.module.css';
 
 export default function Modal({ idCardMovies, onClose }: MovieId) {
   const [modalFilm, setModalFilm] = useState<Film>();
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    Api.fetchMovieById(idCardMovies).then((data) => setModalFilm(data));
+    setLoading(true);
+    Api.fetchMovieById(idCardMovies).then((data) => {
+      setModalFilm(data);
+      setLoading(false);
+    });
   }, [idCardMovies]);
 
   const handleModalClose = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -21,6 +28,7 @@ export default function Modal({ idCardMovies, onClose }: MovieId) {
 
   return (
     <div className={styleModal.overlay} onClick={handleModalClose}>
+      {loading && <img className={styles.load} src={load} />}
       {modalFilm && (
         <div className={styleModal.modal}>
           <svg

@@ -26,7 +26,6 @@ function SearchBar({ setSearch }: PropsSearch) {
       setError(true);
       return;
     }
-
     setSearch(searchLocal);
   };
 
