@@ -1,0 +1,96 @@
+.list {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  width: 400px;
+}
+
+.avatar {
+  display: block;
+  width: 100px;
+  border-radius: 8%;
+  margin: 0 auto 23px;
+}
+.input_avatar {
+  display: block;
+  margin: 10px auto;
+}
+
+.input {
+  height: 32px;
+  width: 344px;
+  margin: 10px auto;
+  display: flex;
+  border: double #1d6c1d;
+  border-radius: 7px;
+  color: #1d6c1d;
+  padding-left: 10px;
+  padding-right: 4px;
+  font: inherit;
+  font-size: 17px;
+  outline: none;
+}
+
+.form_button {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  width: 200px;
+  padding: 10px 20px;
+  margin: 0 auto;
+  border-radius: 4px;
+  background-color: #dffcc6;
+  border: double #88cd88;
+  color: #1d6c1d;
+  border-radius: 7px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.gender {
+  display: flex;
+  margin: 15px auto;
+}
+.gender_radio {
+  margin: 0 20px;
+}
+
+.label_country {
+  display: flex;
+  margin: 10px auto;
+}
+.select_country {
+  height: 20px;
+}
+
+.label_checkbox {
+  margin: 5px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.checkbox {
+  margin-right: 20px;
+}
+
+.message {
+  width: 200px;
+  margin: 11px auto;
+  text-align: center;
+  height: 20px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #eaeb8e;
+  border: double #88cd88;
+}
+
+.input_err {
+  color: #c80d0df0;
+  margin: 0 auto;
+  width: 300px;
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+}

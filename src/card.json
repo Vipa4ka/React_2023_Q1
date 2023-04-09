@@ -1,0 +1,58 @@
+[
+    {
+        "id": "1",
+        "name": "Тomato",
+        "image": "http://4.bp.blogspot.com/-W9viW1URzhU/UpWjEElgHjI/AAAAAAAAG1g/OMqkZ2plSJY/s640/2.jpg",
+        "price": 100,
+        "quantity": 1
+    },
+    {
+        "id": "2",
+        "name": "Potato",
+        "image": "https://ros-test.info/images/article/5d3eee44c3e1b.jpg",
+        "price": 12,
+        "quantity": 1
+    },
+    {
+        "id": "3",
+        "name": "Cucumber",
+        "image": "https://lenta.servicecdn.ru/globalassets/1/-/17/252/69/295736_1.png?preset=fulllossywhite",
+        "price": 80,
+        "quantity": 1
+    },
+    {
+        "id": "4",
+        "name": "Onion",
+        "image": "https://east-fruit.com/wp-content/uploads/2020/10/614cec5806aa2c3f3f4075f23ce631c1.jpg",
+        "price": 35,
+        "quantity": 1
+    },
+    {
+        "id": "5",
+        "name": "Cabbage",
+        "image": "https://zakroma.sumy.ua/image/cache/catalog/ovoschi/belokachannaia-kapusta-500x500.jpg",
+        "price": 18,
+        "quantity": 1
+    },
+    {
+        "id": "6",
+        "name": "Lemon",
+        "image": "https://aroma.com.ua/content/images/15/limon-60989254713058_small11.jpg",
+        "price": 76,
+        "quantity": 1
+    },
+    {
+        "id": "7",
+        "name": "Carrot",
+        "image": "https://img2.zakaz.ua/upload.version_1.0.ef2039411551219a9b9c5e302b674755.1350x1350.jpeg",
+        "price": 35,
+        "quantity": 1
+    },
+    {
+        "id": "8",
+        "name": "Pumpkin",
+        "image": "https://produkty24.com.ua/db_pic/products/original/original_1459294276.59955310821533.jpg",
+        "price": 37,
+        "quantity": 1
+    }
+]
