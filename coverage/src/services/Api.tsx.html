@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>30/36</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.85% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>30/36</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -82,95 +82,44 @@
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
-<a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L20'></a><a href='#L20'>20</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '3ffe89a3ccd04801febc3db968502921';
 &nbsp;
 async function fetchError(url = '', config = {}) {
-  const response = await fetch(url, config<span class="branch-0 cbranch-no" title="branch not covered" >);</span>
-<span class="cstat-no" title="statement not covered" >  return await response.json();</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-//список самых популярных фильмов на сегодня
+  const response = await fetch(url, config);
+  return await response.json();
+}
+&nbsp;
 export function fetchPopularFilms() {
   return fetchError(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`);
 }
 &nbsp;
-//поиск кинофильма по ключевому слову на странице фильмов
-export <span class="fstat-no" title="function not covered" >function fetchMovieSearch(search: string) {</span>
-<span class="cstat-no" title="statement not covered" >  return fetchError(`${BASE_URL}/search/movie?api_key=${API_KEY}&amp;query=${search}`);</span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >}</span></span>
+export function fetchMovieSearch(search: string) {
+  return fetchError(`${BASE_URL}/search/movie?api_key=${API_KEY}&amp;query=${search}`);
+}
 &nbsp;
-// //поиск кинофильма по ключевому слову на странице фильмов
-export <span class="fstat-no" title="function not covered" >function fetchMovieById(id: number) {</span>
-<span class="cstat-no" title="statement not covered" >  return fetchError(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);</span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >}</span></span>
-&nbsp;
-// // запрос полной информации о фильме для страницы кинофильма.
-// export function fetchMovieInfo(filmid) {
-//   return fetchError(`${BASE_URL}/movie/${filmid}?api_key=${API_KEY}`);
-// }
-&nbsp;
-// // запрос информации о актёрском составе для страницы кинофильма.
-// export function fetchСast(filmid) {
-//   return fetchError(`${BASE_URL}/movie/${filmid}/credits?api_key=${API_KEY}`);
-// }
-&nbsp;
-// // запрос обзоров для страницы кинофильма.
-// export function fetchRequestForMovie(filmid) {
-//   return fetchError(`${BASE_URL}/movie/${filmid}/reviews?api_key=${API_KEY}`);
-// }
+export function fetchMovieById(id: number) {
+  return fetchError(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -178,7 +127,7 @@ export <span class="fstat-no" title="function not covered" >function fetchMovieB
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-09T20:08:51.025Z
+                at 2023-04-09T21:58:56.998Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -13,7 +13,6 @@ function HomePage() {
   const [filmsTitle, setFilmsTitle] = useState<Films[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState(localStorage.getItem('message') ?? '');
-  // const [error, setError] = useState('');
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">6.89% </span>
+                <span class="strong">20.13% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/145</span>
+                <span class='fraction'>29/144</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">6.89% </span>
+                <span class="strong">20.13% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/145</span>
+                <span class='fraction'>29/144</span>
             </div>
         
             
@@ -207,8 +207,7 @@
 <a name='L142'></a><a href='#L142'>142</a>
 <a name='L143'></a><a href='#L143'>143</a>
 <a name='L144'></a><a href='#L144'>144</a>
-<a name='L145'></a><a href='#L145'>145</a>
-<a name='L146'></a><a href='#L146'>146</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L145'></a><a href='#L145'>145</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -217,13 +216,28 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -333,29 +347,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState, useEffect } from 'react';
 import * as Api from '../../services/Api';
-// import styles from '../Movies/movies.module.css';
 import styleModal from './Modal.module.css';
 import notImage from '../../assets/notImage.png';
 import avatar from '../../assets/avatar.png';
@@ -363,28 +360,28 @@ import load from '../../assets/loading.gif';
 import { Film, MovieId } from '../../types/index';
 import styles from '../Movies/movies.module.css';
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export default function Modal({ idCardMovies, onClose }: MovieId) {</span></span>
-<span class="cstat-no" title="statement not covered" >  const [modalFilm, setModalFilm] = useState&lt;Film&gt;();</span>
-<span class="cstat-no" title="statement not covered" >  const [loading, setLoading] = useState&lt;boolean&gt;(false);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  useEffect(() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    setLoading(true);</span>
-<span class="cstat-no" title="statement not covered" >    Api.fetchMovieById(idCardMovies).then((data) =&gt; {</span>
+export default function Modal({ idCardMovies, onClose }: MovieId) {
+  const [modalFilm, setModalFilm] = useState&lt;Film&gt;();
+  const [loading, setLoading] = useState&lt;boolean&gt;(false);
+&nbsp;
+  useEffect(() =&gt; {
+    setLoading(true);
+    Api.fetchMovieById(idCardMovies).then((data) =&gt; {
 <span class="cstat-no" title="statement not covered" >      setModalFilm(data);</span>
 <span class="cstat-no" title="statement not covered" >      setLoading(false);</span>
-<span class="cstat-no" title="statement not covered" >    });</span>
-<span class="cstat-no" title="statement not covered" >  }, [idCardMovies]);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  const handleModalClose = (e: React.MouseEvent&lt;HTMLDivElement, MouseEvent&gt;) =&gt; {</span>
+    });
+  }, [idCardMovies]);
+&nbsp;
+  const handleModalClose = <span class="fstat-no" title="function not covered" >(e: React.MouseEvent&lt;HTMLDivElement, MouseEvent&gt;) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (e.currentTarget === e.target) {</span>
 <span class="cstat-no" title="statement not covered" >      onClose();</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" >  };</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  return (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;div className={styleModal.overlay} onClick={handleModalClose}&gt;</span>
-<span class="cstat-no" title="statement not covered" >      {loading &amp;&amp; &lt;img className={styles.load} src={load} /&gt;}</span>
-<span class="cstat-no" title="statement not covered" >      {modalFilm &amp;&amp; (</span>
+&nbsp;
+  return (
+    &lt;div className={styleModal.overlay} onClick={handleModalClose}&gt;
+      {loading &amp;&amp; &lt;img className={styles.load} src={load} /&gt;}
+      {<span class="branch-0 cbranch-no" title="branch not covered" >modalFilm &amp;&amp; (</span>
 <span class="cstat-no" title="statement not covered" >        &lt;div className={styleModal.modal}&gt;</span>
 <span class="cstat-no" title="statement not covered" >          &lt;svg</span>
 <span class="cstat-no" title="statement not covered" >            className={styleModal.modal__cross}</span>
@@ -494,10 +491,10 @@ import styles from '../Movies/movies.module.css';
 <span class="cstat-no" title="statement not covered" >            &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >          &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >      )}</span>
-<span class="cstat-no" title="statement not covered" >    &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >  );</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+      )}
+    &lt;/div&gt;
+  );
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -505,7 +502,7 @@ import styles from '../Movies/movies.module.css';
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-09T20:08:51.025Z
+                at 2023-04-09T21:58:56.998Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

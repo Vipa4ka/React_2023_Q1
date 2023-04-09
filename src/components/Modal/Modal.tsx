@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import * as Api from '../../services/Api';
-// import styles from '../Movies/movies.module.css';
 import styleModal from './Modal.module.css';
 import notImage from '../../assets/notImage.png';
 import avatar from '../../assets/avatar.png';
