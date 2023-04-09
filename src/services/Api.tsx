@@ -10,10 +10,10 @@ export function fetchPopularFilms() {
   return fetchError(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`);
 }
 
-// //поиск кинофильма по ключевому слову на странице фильмов
-// export function fetchMovieSearch(search: string) {
-//   return fetchError(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${search}`);
-// }
+//поиск кинофильма по ключевому слову на странице фильмов
+export function fetchMovieSearch(search: string) {
+  return fetchError(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${search}`);
+}
 
 // //поиск кинофильма по ключевому слову на странице фильмов
 export function fetchMovieById(id: number) {

@@ -94,4 +94,9 @@ export type Films = {
 };
 export interface ClickFilm {
   onClickFilm: (id: number) => void;
+  filmsTitle: Films[];
+}
+
+export interface PropsSearch {
+  setSearch: (searchLocal: string) => void;
 }

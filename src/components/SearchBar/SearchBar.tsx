@@ -1,30 +1,39 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './SearchBar.module.css';
+import { PropsSearch } from '../../types/index';
 
-function SearchBar() {
-  const [searchQuery, setSearchQuery] = useState(localStorage.getItem('message') ?? '');
+function SearchBar({ setSearch }: PropsSearch) {
+  const [searchLocal, setSearchLocal] = useState(localStorage.getItem('message') ?? '');
   const [error, setError] = useState(false);
+  const query = useRef<string>('');
 
   useEffect(() => {
-    localStorage.setItem('message', searchQuery);
-  }, [searchQuery]);
+    query.current = searchLocal;
+  }, [searchLocal]);
 
-  const handleSubmit = (event: React.SyntheticEvent) => {
-    event.preventDefault();
+  useEffect(() => {
+    return () => {
+      localStorage.setItem('message', query.current);
+      setSearch(query.current);
+    };
+  }, [setSearch]);
+
+  const handleSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
     setError(false);
 
-    if (searchQuery.trim() === '') {
+    if (searchLocal.trim() === '') {
       setError(true);
       return;
     }
 
-    setSearchQuery('');
+    setSearch(searchLocal);
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const currentSearch = event.currentTarget.value.toLowerCase();
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const currentSearch = e.currentTarget.value.toLowerCase();
 
-    setSearchQuery(currentSearch);
+    setSearchLocal(currentSearch);
   };
 
   return (
@@ -32,9 +41,9 @@ function SearchBar() {
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
           className={styles.input}
-          type="text"
-          value={searchQuery}
+          value={searchLocal}
           onChange={handleChange}
+          type="text"
           autoComplete="off"
           autoFocus
           placeholder={'Search movies...'}

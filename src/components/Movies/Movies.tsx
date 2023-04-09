@@ -1,21 +1,13 @@
-import { useState, useEffect } from 'react';
-import * as Api from '../../services/Api';
 import styles from './movies.module.css';
 import avatar from '../../assets/avatar.png';
-import { Films, ClickFilm } from '../../types/index';
+import { ClickFilm } from '../../types/index';
 
-export default function Movies({ onClickFilm }: ClickFilm) {
-  const [films, setFilms] = useState<Films[]>([]);
-
-  useEffect(() => {
-    Api.fetchPopularFilms().then((data) => setFilms(data.results));
-  }, []);
-
+export default function Movies({ onClickFilm, filmsTitle }: ClickFilm) {
   return (
     <div>
-      {films && (
+      {filmsTitle && (
         <ul className={styles.homePage}>
-          {films.map((film) => (
+          {filmsTitle.map((film) => (
             <li onClick={() => onClickFilm(film.id)} className={styles.homePageFilms} key={film.id}>
               {film.poster_path ? (
                 <img
@@ -23,7 +15,7 @@ export default function Movies({ onClickFilm }: ClickFilm) {
                   alt={film.title ?? film.name}
                 />
               ) : (
-                <img src={avatar} alt={film.title ?? film.name} />
+                <img className={styles.avatar} src={avatar} alt={film.title ?? film.name} />
               )}
               <p className={styles.title_film}>{film.title ?? film.name}</p>
             </li>

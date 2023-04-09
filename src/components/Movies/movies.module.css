@@ -57,3 +57,8 @@ li {
   padding: 0;
   color: rgb(22, 87, 44);
 }
+
+.avatar {
+  width: 380px;
+  height: 450px;
+}
