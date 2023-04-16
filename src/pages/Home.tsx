@@ -15,22 +15,22 @@ function HomePage() {
   const [search, setSearch] = useState(localStorage.getItem('message') ?? '');
   const [loading, setLoading] = useState<boolean>(false);
 
-  useEffect(() => {
-    setLoading(true);
-    if (!search) {
-      Api.fetchPopularFilms().then((data) => {
-        setFilmsTitle(data.results);
-        setLoading(false);
-      });
+  // useEffect(() => {
+  //   setLoading(true);
+  //   if (!search) {
+  //     Api.fetchPopularFilms().then((data) => {
+  //       setFilmsTitle(data.results);
+  //       setLoading(false);
+  //     });
 
-      return;
-    }
+  //     return;
+  //   }
 
-    Api.fetchMovieSearch(search).then((data) => {
-      setFilmsTitle(data.results);
-      setLoading(false);
-    });
-  }, [search]);
+  //   Api.fetchMovieSearch(search).then((data) => {
+  //     setFilmsTitle(data.results);
+  //     setLoading(false);
+  //   });
+  // }, [search]);
 
   const onClose = () => {
     setIsOpen(false);

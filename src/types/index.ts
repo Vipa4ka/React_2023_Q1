@@ -31,7 +31,7 @@ export interface IFormInput {
   consentNews: boolean;
 }
 
-export type FormCards = {
+export interface FormCards {
   name: string;
   surname: string;
   birthdate: string;
@@ -41,7 +41,7 @@ export type FormCards = {
   consent: boolean;
   consentNews: boolean;
   id: number;
-};
+}
 
 export interface FormProps {
   onSubmitForms?: (newCard: FormCards) => void;

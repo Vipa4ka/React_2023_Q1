@@ -1,14 +1,17 @@
-import { useState } from 'react';
 import HeadTitle from '../components/HeadTitle';
 import Forms from '../components/Forms';
 import CardForm from '../components/Forms/CardForm';
-import { FormCards } from '../types/index';
+import { FormCards } from '../types';
+
+import { useAppDispatch, useAppSelector } from '../redux/hook';
+import { addForm } from '../redux/slice/formSlice';
 
 export default function Form() {
-  const [cards, setCards] = useState<FormCards[]>([]);
+  const dispatch = useAppDispatch();
+  const cards = useAppSelector((state) => state.cards);
 
   const submitForms = (e: FormCards) => {
-    setCards([e, ...cards]);
+    dispatch(addForm(e));
   };
 
   return (

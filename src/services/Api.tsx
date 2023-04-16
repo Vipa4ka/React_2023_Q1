@@ -1,19 +1,24 @@
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '3ffe89a3ccd04801febc3db968502921';
 
-async function fetchError(url = '', config = {}) {
-  const response = await fetch(url, config);
-  return await response.json();
-}
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { FormCards } from '../types';
 
-export function fetchPopularFilms() {
-  return fetchError(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`);
-}
+export const MovieApi = createApi({
+  reducerPath: 'MovieApi',
+  baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
 
-export function fetchMovieSearch(search: string) {
-  return fetchError(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${search}`);
-}
+  endpoints: (builder) => ({
+    getTopMovie: builder.query({
+      query: () => `/trending/movie/day?api_key=${API_KEY}`,
+    }),
+    getSearchMovie: builder.query({
+      query: (searchQuery) => `/search/movie?api_key=${API_KEY}&query=${searchQuery}`,
+    }),
+    getMovieByID: builder.query<FormCards, number>({
+      query: (id) => `/movie/${id}?api_key=${API_KEY}&language=en-US`,
+    }),
+  }),
+});
 
-export function fetchMovieById(id: number) {
-  return fetchError(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
-}
+export const { useGetTopMovieQuery, useGetSearchMovieQuery, useGetMovieByIDQuery } = MovieApi;
