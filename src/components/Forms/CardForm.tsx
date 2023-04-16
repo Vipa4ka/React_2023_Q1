@@ -1,8 +1,10 @@
+import { useAppSelector } from '../../redux/hook';
+
 import styles from './FormsCards.module.css';
 
-import { FormProps } from '../../types/index';
+const CardForm = () => {
+  const cards = useAppSelector((state) => state.cards);
 
-const CardForm = ({ cards }: FormProps) => {
   return (
     <div>
       <ul className={styles.group}>

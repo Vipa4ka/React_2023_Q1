@@ -19,7 +19,7 @@ export default function Form() {
       <HeadTitle>Form</HeadTitle>
 
       <Forms onSubmitForms={submitForms} />
-      {cards.length > 0 && <CardForm cards={cards} />}
+      {cards.length > 0 && <CardForm />}
     </>
   );
 }
