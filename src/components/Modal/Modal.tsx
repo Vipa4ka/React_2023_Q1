@@ -1,23 +1,14 @@
-import { useState, useEffect } from 'react';
-import * as Api from '../../services/Api';
+import { useGetMovieSearchByIdQuery } from '../../services/Api';
+
 import styleModal from './Modal.module.css';
 import notImage from '../../assets/notImage.png';
 import avatar from '../../assets/avatar.png';
 import load from '../../assets/loading.gif';
-import { Film, MovieId } from '../../types/index';
+import { MovieId } from '../../types/index';
 import styles from '../Movies/movies.module.css';
 
 export default function Modal({ idCardMovies, onClose }: MovieId) {
-  const [modalFilm, setModalFilm] = useState<Film>();
-  const [loading, setLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    setLoading(true);
-    Api.fetchMovieById(idCardMovies).then((data) => {
-      setModalFilm(data);
-      setLoading(false);
-    });
-  }, [idCardMovies]);
+  const { data, isLoading } = useGetMovieSearchByIdQuery(idCardMovies);
 
   const handleModalClose = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (e.currentTarget === e.target) {
@@ -27,8 +18,8 @@ export default function Modal({ idCardMovies, onClose }: MovieId) {
 
   return (
     <div className={styleModal.overlay} onClick={handleModalClose}>
-      {loading && <img className={styles.load} src={load} />}
-      {modalFilm && (
+      {isLoading && <img className={styles.load} src={load} />}
+      {data && (
         <div className={styleModal.modal}>
           <svg
             className={styleModal.modal__cross}
@@ -42,23 +33,21 @@ export default function Modal({ idCardMovies, onClose }: MovieId) {
             <img
               className={styleModal.img_total}
               src={
-                modalFilm.poster_path
-                  ? `https://image.tmdb.org/t/p/w300/${modalFilm.poster_path}`
-                  : avatar
+                data.poster_path ? `https://image.tmdb.org/t/p/w300/${data.poster_path}` : avatar
               }
-              alt={modalFilm.title}
+              alt={data.title}
             />
             <div className={styleModal.info_card}>
-              <h1 className={styleModal.title}>{modalFilm.title}</h1>
-              <h2 className={styleModal.title}>{modalFilm.tagline}</h2>
+              <h1 className={styleModal.title}>{data.title}</h1>
+              <h2 className={styleModal.title}>{data.tagline}</h2>
               <p>
-                <span className={styleModal.span}>Overview:</span> {modalFilm.overview}
+                <span className={styleModal.span}>Overview:</span> {data.overview}
               </p>
               <p>
                 <span className={styleModal.span}>Homepage:</span>
-                {modalFilm.homepage ? (
-                  <a className={styleModal.homepage} href={modalFilm.homepage}>
-                    {modalFilm.homepage}
+                {data.homepage ? (
+                  <a className={styleModal.homepage} href={data.homepage}>
+                    {data.homepage}
                   </a>
                 ) : (
                   ' Site not listed'
@@ -67,50 +56,50 @@ export default function Modal({ idCardMovies, onClose }: MovieId) {
               <p>
                 <span className={styleModal.span}> Genres:</span>
 
-                {modalFilm.genres.map((film) => '|' + film.name + '|')}
+                {data.genres.map((film) => '|' + film.name + '|')}
               </p>
               <p>
                 <span className={styleModal.span}> Original language:</span>
-                {modalFilm.original_language}
+                {data.original_language}
               </p>
               <p>
                 <span className={styleModal.span}> Spoken languages:</span>
 
-                {modalFilm.spoken_languages.length > 0
-                  ? modalFilm.spoken_languages.map((language) => '|' + language.english_name + '|')
+                {data.spoken_languages.length > 0
+                  ? data.spoken_languages.map((language) => '|' + language.english_name + '|')
                   : ' Not specified'}
               </p>
               <p>
                 <span className={styleModal.span}> User Score:</span>
-                {modalFilm.vote_average}
+                {data.vote_average}
               </p>
               <p>
                 <span className={styleModal.span}> Vote count:</span>
-                {modalFilm.vote_count}
+                {data.vote_count}
               </p>
               <p>
                 <span className={styleModal.span}> Popularity:</span>
-                {modalFilm.popularity}
+                {data.popularity}
               </p>
               <p>
                 <span className={styleModal.span}> Budget:</span>
-                {modalFilm.budget > 0 ? modalFilm.budget : ' Not specified'}
+                {data.budget > 0 ? data.budget : ' Not specified'}
               </p>
               <p>
                 <span className={styleModal.span}> Revenue:</span>
-                {modalFilm.revenue > 0 ? modalFilm.revenue : ' Not specified'}
+                {data.revenue > 0 ? data.revenue : ' Not specified'}
               </p>
               <p>
                 <span className={styleModal.span}> Release date:</span>
-                {modalFilm.release_date}
+                {data.release_date}
               </p>
               <p>
                 <span className={styleModal.span}> Runtime:</span>
-                {modalFilm.runtime}
+                {data.runtime}
               </p>
               <p>
                 <span className={styleModal.span}> Status:</span>
-                {modalFilm.status}
+                {data.status}
               </p>
             </div>
           </div>
@@ -119,8 +108,8 @@ export default function Modal({ idCardMovies, onClose }: MovieId) {
             <div className={styleModal.company}>
               <span className={styleModal.span}> Production companies:</span>
 
-              {modalFilm.production_companies.length > 0
-                ? modalFilm.production_companies.map((film) => (
+              {data.production_companies.length > 0
+                ? data.production_companies.map((film) => (
                     <div className={styleModal.list} key={film.id}>
                       <img
                         className={styleModal.company_img}
