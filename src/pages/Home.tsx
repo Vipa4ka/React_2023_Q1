@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import * as Api from '../services/Api';
+import { useAppSelector } from '../redux/hook';
+import { useGetPopularFilmsQuery, useGetMovieSearchQuery } from '../services/Api';
+
 import HeadTitle from '../components/HeadTitle';
 import SearchBar from '../components/SearchBar';
 import Movies from '../components/Movies';
@@ -12,25 +14,28 @@ function HomePage() {
   const [idMovie, setIdMovie] = useState(0);
   const [filmsTitle, setFilmsTitle] = useState<Films[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [search, setSearch] = useState(localStorage.getItem('message') ?? '');
   const [loading, setLoading] = useState<boolean>(false);
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   if (!search) {
-  //     Api.fetchPopularFilms().then((data) => {
-  //       setFilmsTitle(data.results);
-  //       setLoading(false);
-  //     });
+  const search = useAppSelector((state) => state.search.search);
 
-  //     return;
-  //   }
+  const GetPopularFilms = useGetPopularFilmsQuery('');
+  const GetMovieSearch = useGetMovieSearchQuery(search);
 
-  //   Api.fetchMovieSearch(search).then((data) => {
-  //     setFilmsTitle(data.results);
-  //     setLoading(false);
-  //   });
-  // }, [search]);
+  const PopularFilms = GetPopularFilms.data?.results;
+  const MovieSearch = GetMovieSearch.data?.results;
+
+  useEffect(() => {
+    setLoading(true);
+    if (!search) {
+      setFilmsTitle(PopularFilms);
+      setLoading(false);
+
+      return;
+    }
+
+    setFilmsTitle(MovieSearch);
+    setLoading(false);
+  }, [MovieSearch, PopularFilms, search]);
 
   const onClose = () => {
     setIsOpen(false);
@@ -43,7 +48,7 @@ function HomePage() {
   return (
     <>
       <HeadTitle>MOVIES</HeadTitle>
-      <SearchBar setSearch={setSearch} />
+      <SearchBar />
       {loading && <img className={styles.load} src={load} />}
       <Movies onClickFilm={openModal} filmsTitle={filmsTitle} />
       {isOpen && <Modal idCardMovies={idMovie} onClose={onClose} />}

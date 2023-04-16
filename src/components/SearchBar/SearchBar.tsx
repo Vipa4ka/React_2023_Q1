@@ -1,22 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
+import { useAppSelector, useAppDispatch } from '../../redux/hook';
 import styles from './SearchBar.module.css';
-import { PropsSearch } from '../../types/index';
+import { searchQuery } from '../../redux/slice/searchSlice';
 
-function SearchBar({ setSearch }: PropsSearch) {
-  const [searchLocal, setSearchLocal] = useState(localStorage.getItem('message') ?? '');
+function SearchBar() {
+  const search = useAppSelector((state) => state.search.search);
+  const dispatch = useAppDispatch();
+
   const [error, setError] = useState(false);
-  const query = useRef<string>('');
-
-  useEffect(() => {
-    query.current = searchLocal;
-  }, [searchLocal]);
-
-  useEffect(() => {
-    return () => {
-      localStorage.setItem('message', query.current);
-      setSearch(query.current);
-    };
-  }, [setSearch]);
+  const [searchLocal, setSearchLocal] = useState(search);
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -26,11 +18,12 @@ function SearchBar({ setSearch }: PropsSearch) {
       setError(true);
       return;
     }
-    setSearch(searchLocal);
+
+    dispatch(searchQuery(searchLocal));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const currentSearch = e.currentTarget.value.toLowerCase();
+    const currentSearch = e.currentTarget.value;
 
     setSearchLocal(currentSearch);
   };
