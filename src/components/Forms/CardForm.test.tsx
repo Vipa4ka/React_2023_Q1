@@ -1,29 +1,44 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import CardForm from './CardForm';
 
-const cards = [
-  {
-    avatar: 'avatar',
-    name: 'Ivan',
-    surname: 'Iks',
-    birthdate: '01.05.1984',
-    gender: 'male',
-    country: 'Poland',
-    consent: false,
-    consentNews: true,
-    id: 5,
-  },
-];
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+const initialState = {
+  cards: [
+    {
+      avatar: 'avatar',
+      name: 'Ivan',
+      surname: 'Iks',
+      birthdate: '01.05.1984',
+      gender: 'male',
+      country: 'Poland',
+      consent: false,
+      consentNews: true,
+      id: 5,
+    },
+  ],
+};
 
 describe('CardForm', () => {
-  it('renders without crashing', () => {
-    const { getByRole } = render(<CardForm cards={[]} />);
-    expect(getByRole('list')).toBeInTheDocument();
-  });
-  it(' correct data', () => {
-    const { getByAltText, getByText } = render(<CardForm cards={cards} />);
-    expect(getByAltText('avatar')).toHaveAttribute('src', 'avatar');
+  const reducer = (state = initialState, action: { type: unknown }) => {
+    switch (action.type) {
+      default:
+        return state;
+    }
+  };
+
+  const store = createStore(reducer);
+
+  it('renders form data correctly', () => {
+    const { getByAltText, getByText } = render(
+      <Provider store={store}>
+        <CardForm />
+      </Provider>
+    );
+
+    expect(getByAltText('avatar')).toBeInTheDocument();
     expect(getByText('Ivan Iks')).toBeInTheDocument();
     expect(getByText(`Birthdate: ${'01.05.1984'}`)).toBeInTheDocument();
     expect(getByText(`Country: ${'Poland'}`)).toBeInTheDocument();

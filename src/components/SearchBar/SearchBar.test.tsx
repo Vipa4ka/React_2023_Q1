@@ -1,11 +1,32 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, expect, vi } from 'vitest';
+import { describe, expect } from 'vitest';
 import SearchBar from './SearchBar';
 
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+const initialState = {
+  search: {
+    search: '',
+  },
+};
+
 describe('SearchBar', () => {
-  const setSearch = vi.fn();
+  const reducer = (state = initialState, action: { type: string }) => {
+    switch (action.type) {
+      default:
+        return state;
+    }
+  };
+
+  const store = createStore(reducer);
+
   it('correct render ', () => {
-    const { getByPlaceholderText, getByText } = render(<SearchBar setSearch={setSearch} />);
+    const { getByPlaceholderText, getByText } = render(
+      <Provider store={store}>
+        <SearchBar />
+      </Provider>
+    );
     const input = getByPlaceholderText('Search movies...');
     const Btn = getByText('Search');
 
@@ -14,7 +35,11 @@ describe('SearchBar', () => {
   });
 
   it('test SearchQuery ', () => {
-    const { getByPlaceholderText, getByText } = render(<SearchBar setSearch={setSearch} />);
+    const { getByPlaceholderText, getByText } = render(
+      <Provider store={store}>
+        <SearchBar />
+      </Provider>
+    );
     const input = getByPlaceholderText('Search movies...');
     const Btn = getByText('Search');
 
@@ -23,7 +48,11 @@ describe('SearchBar', () => {
   });
 
   it('test placeholder without', () => {
-    render(<SearchBar setSearch={setSearch} />);
+    render(
+      <Provider store={store}>
+        <SearchBar />
+      </Provider>
+    );
 
     expect(screen.getByPlaceholderText(/search/i)).toBeInTheDocument();
   });
